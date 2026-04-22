@@ -1,4 +1,4 @@
-# A Workload-Adaptive Multi-Heuristic System for Delivery Route Optimization
+## A Workload-Adaptive Multi-Heuristic System for Delivery Route Optimization
 
 ## This project presents a workload-adaptive delivery route optimization system designed to improve efficiency, fairness, and stability in multi-agent logistics environments.
 Unlike traditional routing systems that focus only on minimizing distance or cost, this system integrates workload balancing directly into the optimization process, ensuring equitable task distribution among delivery agents while maintaining high routing efficiency
@@ -9,6 +9,7 @@ Unlike traditional routing systems that focus only on minimizing distance or cos
 * Reduce agent fatigue through historical workload tracking
 * Prevent repetitive or biased task allocation
 * Maintain stability and fairness in dynamic environments
+
 
 ## Core Features
 
@@ -91,12 +92,14 @@ The project generates:
    * Workload variance
    * Fairness index
 
+
 ## How to Run
 
 ```bash
 pip install -r requirements.txt
 python main.py
 ```
+
 
 ## Project Structure
 
@@ -110,6 +113,7 @@ python main.py
 │   ├── ga_optimized_routes.png
 │   └── comparison.png
 ```
+
 
 ## Future Scope
 * Integration with real-time traffic data
