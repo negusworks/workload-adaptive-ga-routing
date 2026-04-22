@@ -110,7 +110,7 @@ python main.py
 ├── requirements.txt
 ├── outputs/
 │   ├── fitness_convergence.png
-│   ├── ga_optimized_routes.png
+│   ├── optimized_routes.png
 │   └── comparison.png
 ```
 
