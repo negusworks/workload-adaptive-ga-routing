@@ -127,6 +127,6 @@ python main.py
 This project introduces a unified framework where workload balancing is not a post-processing step but an integral part of the optimization process, enabling fair, adaptive, and efficient delivery routing.
 
 ## Team
-Riya Susan Samuel 23MID0150
-Neha Srikanth 23MID0168
-Pragna Madineni Jayadev 23MID0375
+* **Riya Susan Samuel 23MID0150**
+* **Neha Srikanth 23MID0168**
+* **Pragna Madineni Jayadev 23MID0375**
