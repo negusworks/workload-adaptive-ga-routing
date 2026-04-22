@@ -2,7 +2,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
-# ---------------- PARAMETERS ----------------
+# PARAMETERS
 nAgents = 3
 nDeliveries = 20
 
@@ -20,7 +20,7 @@ w_max = 15
 w_total = 5   
 w_fair = 10
 
-# ---------------- DEPOT ----------------
+# DEPOT
 depot = np.array([13.0, 80.2])
 
 locations = np.array([
@@ -28,7 +28,7 @@ locations = np.array([
     for _ in range(nDeliveries)
 ])
 
-# ---------------- ROUTE LENGTH ----------------
+# ROUTE LENGTH
 def route_length(points):
     if len(points) == 0:
         return 0
@@ -38,7 +38,7 @@ def route_length(points):
     dist += np.linalg.norm(points[-1] - depot)
     return dist
 
-# ---------------- 2-OPT ----------------
+# 2-OPT
 def two_opt(points):
     if len(points) < 3:
         return points
@@ -54,12 +54,12 @@ def two_opt(points):
                     improved = True
     return best
 
-# ---------------- INIT ----------------
+# INITIALIZE
 def init_population():
     return [[random.randint(0, nAgents-1) for _ in range(nDeliveries)]
             for _ in range(POP_SIZE)]
 
-# ---------------- WORKLOAD ----------------
+# WORKLOAD
 def compute_workload(chromo):
     agent_points = [[] for _ in range(nAgents)]
 
@@ -78,11 +78,11 @@ def compute_workload(chromo):
 
     return W, route_distances, agent_points
 
-# ---------------- FAIRNESS ----------------
+# FAIRNESS
 def fairness(W):
     return (np.max(W) - np.min(W)) / (np.sum(W) + 1e-6)
 
-# ---------------- FITNESS ----------------
+# FITNESS
 def compute_fitness(W, route_distances, agent_points):
 
     total_distance = np.sum(route_distances)
@@ -90,7 +90,6 @@ def compute_fitness(W, route_distances, agent_points):
     max_load = np.max(W)
     total_load = np.sum(W)
 
-    #  STRONGER CONTROL
     overload_penalty = sum([20*(w-W_MAX)**2 for w in W if w > W_MAX])
     stops_penalty = np.var([len(agent_points[i]) for i in range(nAgents)])
 
@@ -106,7 +105,7 @@ def compute_fitness(W, route_distances, agent_points):
 
     return fitness
 
-# ---------------- GA OPS ----------------
+# GA OPERATIONS
 def tournament_selection(pop, fitnesses):
     selected = random.sample(list(zip(pop, fitnesses)), 3)
     selected.sort(key=lambda x: x[1])
@@ -122,7 +121,7 @@ def mutate(chromo):
         chromo[i] = random.randint(0, nAgents-1)
     return chromo
 
-# ---------------- GA ----------------
+# GA
 population = init_population()
 
 best_solution = None
@@ -171,10 +170,10 @@ for gen in range(GENERATIONS):
 
     print(f"Gen {gen+1} | Curr: {current_best:.4f} | Best: {best_fitness:.4f}")
 
-# ---------------- FINAL GA ----------------
+# FINAL GA 
 W, route_distances, _ = compute_workload(best_solution)
 
-# ---------------- DIJKSTRA BASELINE ----------------
+# DIJKSTRA BASELINE
 def dijkstra_baseline():
     agent_points = [[] for _ in range(nAgents)]
     for i in range(nDeliveries):
@@ -183,7 +182,7 @@ def dijkstra_baseline():
 
 dij_W = dijkstra_baseline()
 
-# ---------------- RESULTS ----------------
+# RESULTS 
 print("\n===== FINAL COMPARISON =====")
 
 print("\n--- DISTANCE ---")
