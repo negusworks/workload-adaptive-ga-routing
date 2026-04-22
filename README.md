@@ -18,35 +18,35 @@ Unlike traditional routing systems that focus only on minimizing distance or cos
 * Uses workload variance to measure imbalance
 * Penalizes uneven task distribution during optimization
 
-### 2. Fairness Control Mechanism
+**2. Fairness Control Mechanism**
 * Integrates fairness directly into the fitness function
 * Ensures no agent is consistently overloaded or underutilized
 
-### 3. Adaptive Control Strategy
+**3. Adaptive Control Strategy**
 * Dynamically adjusts optimization behavior based on:
   * Workload imbalance
   * System convergence
 * Promotes redistribution when imbalance is high
 * Refines solutions when the system is stable
 
-### 4. Fatigue-Aware Allocation
+**4. Fatigue-Aware Allocation**
 * Tracks cumulative workload across iterations
 * Applies penalties to prevent repeated overloading of agents
 * Improves long-term system stability
 
-### 5. Novelty-Based Search
+**5. Novelty-Based Search**
 * Compares current workload patterns with previous ones
 * Encourages diverse routing solutions
 * Prevents premature convergence
 
-### 6. Multi-Heuristic Optimization
+**6. Multi-Heuristic Optimization**
 * Combines global search with local route improvement (2-opt)
 * Enhances solution quality and convergence speed
 
 
 ##  Methodology
 
-### Step-by-Step Workflow
+**Step-by-Step Workflow**
 1. Initialize population of routing solutions
 2. Decode routes into delivery-agent assignments
 3. Compute workload for each agent
