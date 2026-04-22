@@ -13,7 +13,7 @@ Unlike traditional routing systems that focus only on minimizing distance or cos
 
 ## Core Features
 
-### 1. Workload-Aware Optimization
+**1. Workload-Aware Optimization**
 * Computes workload for each agent based on route distance
 * Uses workload variance to measure imbalance
 * Penalizes uneven task distribution during optimization
