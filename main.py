@@ -201,17 +201,18 @@ print("\n--- FAIRNESS ---")
 print(f"Dijkstra: {fairness(dij_W):.4f}")
 print(f"GA: {fairness(W):.4f}")
 
-# ---------------- PLOT ----------------
+# FITNESS PLOT 
 initial = fitness_history[0]
 percent_improve = [(initial - f)/initial * 100 for f in fitness_history]
 plt.plot(percent_improve)
 plt.title("Fitness Improvement")
 plt.xlabel("Generation")
 plt.ylabel("% Improvement")
+plt.savefig("outputs/fitness_convergence_60_generations.png", dpi=300)
 plt.show()
 
 
-# ---------------- VISUALIZATION ----------------
+# ROUTE VISUALIZATION 
 colors = ['red', 'blue', 'green', 'purple', 'orange']
 
 # plot depot
@@ -241,10 +242,11 @@ plt.title("GA Optimized Delivery Routes")
 plt.xlabel("Latitude")
 plt.ylabel("Longitude")
 plt.legend()
+plt.savefig("outputs/ga_optimized_routes.png", dpi=300)
 plt.show()
 
 
-# ---------------- COMBINED GA vs DIJKSTRA VISUALIZATION ----------------
+# COMPARISON WITH BASELINE
 plt.figure(figsize=(8,6))
 
 colors = ['red', 'blue', 'green', 'purple', 'orange']
@@ -252,7 +254,7 @@ colors = ['red', 'blue', 'green', 'purple', 'orange']
 # plot depot
 plt.scatter(depot[0], depot[1], c='black', marker='X', s=120, label='Depot')
 
-# ---------- GA ROUTES ----------
+# GA Routes
 agent_points = [[] for _ in range(nAgents)]
 for i in range(nDeliveries):
     agent_points[best_solution[i]].append(locations[i])
@@ -271,7 +273,7 @@ for i in range(nAgents):
              linewidth=2,
              label=f'GA Agent {i}')
 
-# ---------- DIJKSTRA BASELINE ROUTES ----------
+# Dijkstra Routes
 dij_agent_points = [[] for _ in range(nAgents)]
 for i in range(nDeliveries):
     dij_agent_points[i % nAgents].append(locations[i])
@@ -299,5 +301,5 @@ plt.ylabel("Longitude")
 handles, labels = plt.gca().get_legend_handles_labels()
 by_label = dict(zip(labels, handles))
 plt.legend(by_label.values(), by_label.keys())
-
+plt.savefig("outputs/ga_vs_dijkstra_comparison.png", dpi=300)
 plt.show()
